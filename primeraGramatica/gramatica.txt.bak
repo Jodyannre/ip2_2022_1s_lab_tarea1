@@ -1,0 +1,153 @@
+No sensitive
+
+Comentarios
+//
+**
+Tipos
+String, Integer, real,boolean
+
+Declaración
+Declarar ID TIPO = <Valor inicial>;
+Asignación
+ID = <Valor>;
+
+Aritmeticos
+Suma, resta, multiplicación, división y módulo
+
+Relacionales
+>, >=, =
+
+Lógicos
+AND, OR
+
+Estructuras de control
+If
+If entonces
+If entonces if
+
+Nativas
+Sentencia.consola( 6+6 );
+Reportes
+Errores léxicos, sintácticos y semánticos
+Línea, columna, tipo de error, descripción, ámbito
+
+
+////////////////////////////////////////////////////////
+
+inicio -> PUBLICO MAIN DOSPUNTOS ID CORCHETE_CUADRADO_IZQUIERDO ID PARENTESIS_IZQUIERDO STRING CORCHETE_CURVO_IZQ CORCHETE_CURVO_DER PARENTESIS_DERECHA DOSPUNTOS ID CORCHETE_CUADRADO_IZQUIERDO
+instrucciones CORCHETE_CUADRADO_DERECHO CORCHETE_CUADRADO_DERECHO
+
+instrucciones -> instrucciones instruccion
+				|instruccion
+
+
+
+instruccion -> declaracion 
+			|asignacion 
+			|funcion_imprimir 
+			|control_if 
+			|expresion
+
+
+declaracion -> DECLARAR ID tipo IGUAL MENOR_Q expresion MAYOR_Q PUNTOCOMA
+
+asignacion -> ID IGUAL MENOR_Q expresion MAYOR_Q PUNTOCOMA
+	
+
+expresion -> UMENOS expresion
+			|expresion operador_aritmetico expresion
+			|expresion operacion_logica expresion
+			|expresion operador_comparacion expresion
+			|NUMERO
+			|DECIMAL
+			|CADENA
+			|TRUE
+			|FALSE
+			|ID
+			|PARENTESIS_DERECHO expresion PARENTESIS_IZQUIERDO
+
+
+tipo -> INTEGER
+		|REAL
+		|BOOLEAN
+		|STRING
+
+
+operador_comparacion -> MAYOR_Q
+						| MAYOR_Q IGUAL
+						| IGUAL
+						
+operador_logico -> 		AND
+						|OR
+				
+operador_aritmetico -> 	SUMA
+						|RESTA
+						|MULTIPLICACION
+						|DIVISION
+						|MODULO
+				
+				
+
+//ESTRUCTURA DE CONTROL IF, IF ELSE, IF ELSE 
+
+control_if -> control_if IF ELSE DOSPUNTOS PARENTESIS_DERECHO expresion PARENTESIS_IZQUIERDO CORCHETE_CUADRADO_DERECHO instruccion CORCHETE_CUADRADO_IZQUIERDO PUNTOCOMA
+control_if -> control_if IF ELSE DOSPUNTOS PARENTESIS_DERECHO expresion PARENTESIS_IZQUIERDO CORCHETE_CUADRADO_DERECHO instruccion CORCHETE_CUADRADO_IZQUIERDO control_else
+control_if -> IF DOSPUNTOS PARENTESIS_DERECHO expresion PARENTESIS_IZQUIERDO CORCHETE_CUADRADO_DERECHO instruccion CORCHETE_CUADRADO_IZQUIERDO PUNTOCOMA
+control_if -> IF DOSPUNTOS PARENTESIS_DERECHO expresion PARENTESIS_IZQUIERDO CORCHETE_CUADRADO_DERECHO instruccion CORCHETE_CUADRADO_IZQUIERDO control_else
+
+control_else -> ELSE CORCHETE_CUADRADO_DERECHO instruccion CORCHETE_CUADRADO_IZQUIERDO PUNTOCOMA
+
+
+//FUNCIONES NATIVAS -- SOLO PRINT
+
+funcion_imprimir -> SENTENCIA PUNTO CONSOLA PARENTESIS_DERECHO instruccion PARENTESIS_IZQUIERDO PUNTOCOMA
+
+
+
+
+
+////////////////////////////////////////////////////////////////////LEXICO
+
+"+"
+"-"
+"*"
+"/"
+"%"
+"("
+")"
+"["
+"]"
+"{"
+"}"
+":"
+";"
+"<"
+">"
+"SENTENCIA"
+"AND"
+"OR"
+"="
+"IF"
+"ENTONCES"
+"CONSOLA"
+"STRING"
+"INTEGER"
+"REAL"
+"BOOLEAN"
+"//"
+"TRUE"
+"FALSE"
+"PUBLICO"
+"PRIVADO"
+"MAIN"
+"PRINCIPAL"
+"METODO"
+"CLASE"
+
+[a-z]([a-z]|[0-9])*     			
+[0-9]+("."[0-9]+)  				
+[0-9]+\b    							
+
+
+
+
