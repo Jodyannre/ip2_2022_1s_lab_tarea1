@@ -2,6 +2,7 @@ package Expresiones
 
 import (
 	"fmt"
+	"math"
 	dato_interface "primeraGramatica/Analizador/Ast"
 )
 
@@ -88,6 +89,24 @@ func (op Operacion) GetValue(entorno dato_interface.Scope) dato_interface.TipoRe
 		}
 
 	case "-":
+		if op.unario {
+			//Es una operación unaria
+			if tipo_izq.Tipo == dato_interface.REAL {
+				//Es un real
+				return dato_interface.TipoRetornado{
+					Tipo:  dato_interface.REAL,
+					Valor: tipo_izq.Valor.(float64) * -1,
+				}
+			} else {
+				//Es un int
+				return dato_interface.TipoRetornado{
+					Tipo:  dato_interface.INTEGER,
+					Valor: tipo_izq.Valor.(int) * -1,
+				}
+			}
+
+		}
+
 		result_dominante = resta_dominante[tipo_izq.Tipo][tipo_der.Tipo]
 
 		if result_dominante == dato_interface.INTEGER {
@@ -150,7 +169,99 @@ func (op Operacion) GetValue(entorno dato_interface.Scope) dato_interface.TipoRe
 			}
 
 		}
-	}
+	case "%":
+		result_dominante = mul_div_dominante[tipo_izq.Tipo][tipo_der.Tipo]
+		if result_dominante == dato_interface.INTEGER {
+			return dato_interface.TipoRetornado{
+				Tipo:  result_dominante,
+				Valor: tipo_izq.Valor.(int) % tipo_der.Valor.(int),
+			}
 
+		} else if result_dominante == dato_interface.REAL {
+			return dato_interface.TipoRetornado{
+				Tipo:  result_dominante,
+				Valor: math.Mod(tipo_izq.Valor.(float64), tipo_der.Valor.(float64)),
+			}
+
+		} else if result_dominante == dato_interface.NULL {
+			return dato_interface.TipoRetornado{
+				Tipo:  result_dominante,
+				Valor: nil,
+			}
+
+		}
+	case "AND":
+		return dato_interface.TipoRetornado{
+			Tipo:  dato_interface.BOOLEAN,
+			Valor: tipo_izq.Valor.(bool) && tipo_der.Valor.(bool),
+		}
+	case "OR":
+		return dato_interface.TipoRetornado{
+			Tipo:  dato_interface.BOOLEAN,
+			Valor: tipo_izq.Valor.(bool) || tipo_der.Valor.(bool),
+		}
+
+	case ">":
+		var val_der interface{}
+		var val_izq interface{}
+		if tipo_izq.Tipo == dato_interface.REAL || tipo_der.Tipo == dato_interface.REAL {
+
+			if tipo_izq.Tipo == dato_interface.REAL {
+				val_izq = tipo_izq.Valor.(float64)
+			} else {
+				val_izq = (float64)(tipo_izq.Valor.(int))
+			}
+
+			if tipo_izq.Tipo == dato_interface.REAL {
+				val_der = tipo_der.Valor.(float64)
+			} else {
+				val_der = (float64)(tipo_der.Valor.(int))
+			}
+
+			return dato_interface.TipoRetornado{
+				Tipo:  dato_interface.BOOLEAN,
+				Valor: val_izq.(float64) > val_der.(float64),
+			}
+
+		} else {
+			val_izq = tipo_izq.Valor.(int)
+			val_der = tipo_der.Valor.(int)
+			return dato_interface.TipoRetornado{
+				Tipo:  dato_interface.BOOLEAN,
+				Valor: val_izq.(int) > val_der.(int),
+			}
+		}
+	case ">=":
+		var val_der interface{}
+		var val_izq interface{}
+		if tipo_izq.Tipo == dato_interface.REAL || tipo_der.Tipo == dato_interface.REAL {
+
+			if tipo_izq.Tipo == dato_interface.REAL {
+				val_izq = tipo_izq.Valor.(float64)
+			} else {
+				val_izq = (float64)(tipo_izq.Valor.(int))
+			}
+
+			if tipo_izq.Tipo == dato_interface.REAL {
+				val_der = tipo_der.Valor.(float64)
+			} else {
+				val_der = (float64)(tipo_der.Valor.(int))
+			}
+
+			return dato_interface.TipoRetornado{
+				Tipo:  dato_interface.BOOLEAN,
+				Valor: val_izq.(float64) >= val_der.(float64),
+			}
+
+		} else {
+			val_izq = tipo_izq.Valor.(int)
+			val_der = tipo_der.Valor.(int)
+			return dato_interface.TipoRetornado{
+				Tipo:  dato_interface.BOOLEAN,
+				Valor: val_izq.(int) >= val_der.(int),
+			}
+		}
+
+	}
 	return dato_interface.TipoRetornado{Tipo: dato_interface.NULL, Valor: nil}
 }

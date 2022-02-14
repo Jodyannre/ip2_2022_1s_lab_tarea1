@@ -1,6 +1,8 @@
 package Ast
 
-import "strings"
+import (
+	"strings"
+)
 
 type Scope struct {
 	name          string
@@ -20,8 +22,8 @@ func (scope *Scope) Add(simbolo Simbolo) {
 	scope.tablaSimbolos[id] = simbolo
 }
 
-func (scope *Scope) Exist(simbolo Simbolo) bool {
-	id := strings.ToUpper(simbolo.Identificador)
+func (scope *Scope) Exist(ident string) bool {
+	id := strings.ToUpper(ident)
 
 	for scope_actual := scope; scope_actual != nil; scope_actual = scope_actual.prev {
 
@@ -34,24 +36,18 @@ func (scope *Scope) Exist(simbolo Simbolo) bool {
 	return false
 }
 
-func (scope *Scope) getSimbolo(ident string) Simbolo {
+func (scope *Scope) Exist_actual(ident string) bool {
 	id := strings.ToUpper(ident)
-
-	for scope_actual := scope; scope_actual != nil; scope_actual = scope_actual.prev {
-
-		for key, simboloRetorno := range scope_actual.tablaSimbolos {
-			if key == id {
-				return simboloRetorno.(Simbolo)
-			}
+	for key, _ := range scope.tablaSimbolos {
+		if key == id {
+			return true
 		}
 	}
-	var simboloNull Simbolo
-	return simboloNull
+	return false
 }
 
-func (scope *Scope) updateSimbolo(ident string, valorNuevo Simbolo) {
+func (scope *Scope) UpdateSimbolo(ident string, valorNuevo Simbolo) {
 	id := strings.ToUpper(ident)
-
 	for scope_actual := scope; scope_actual != nil; scope_actual = scope_actual.prev {
 
 		for key, _ := range scope_actual.tablaSimbolos {
@@ -61,4 +57,19 @@ func (scope *Scope) updateSimbolo(ident string, valorNuevo Simbolo) {
 		}
 	}
 
+}
+
+func (scope *Scope) GetSimbolo(ident string) Simbolo {
+	id := strings.ToUpper(ident)
+
+	for scope_actual := scope; scope_actual != nil; scope_actual = scope_actual.prev {
+		for key, simboloRetorno := range scope_actual.tablaSimbolos {
+			if key == id {
+				nsimbolo := simboloRetorno.(Simbolo)
+				return nsimbolo
+			}
+		}
+	}
+	var simboloNull Simbolo
+	return simboloNull
 }

@@ -2,6 +2,9 @@ package main
 
 import (
 	"fmt"
+	//"primeraGramatica/Analizador/Ast"
+
+	"math"
 	"primeraGramatica/parser"
 
 	"github.com/antlr/antlr4/runtime/Go/antlr"
@@ -29,7 +32,7 @@ func (v *Visitor) ExitProd_inicio(ctx *parser.Prod_inicioContext) {
 func (v *Visitor) VisitProd_numero(ctx *parser.Prod_numeroContext) int {
 	fmt.Println(ctx.GetText())
 	fmt.Println("Entro aquí")
-
+	fmt.Println("me cago")
 	//n, _ := strconv.ParseInt(ctx.GetText(), 0, 64)
 	return 5
 }
@@ -46,8 +49,9 @@ func (v *Visitor) ExitOp_arit(ctx *parser.Op_aritContext) {
 }
 
 func main() {
-	var input string = "5+5"
+	fmt.Println(math.Mod(-8.0, 66.0))
 
+	var input string = "hola mundo"
 	//Obteniendo el input
 	cadena_entrada := antlr.NewInputStream(input)
 
