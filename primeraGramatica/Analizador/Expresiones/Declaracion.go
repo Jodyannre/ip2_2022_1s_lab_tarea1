@@ -13,22 +13,26 @@ type Declaracion struct {
 	Columna int
 }
 
-func NewDeclaracion(linea int, columna int, id string, tipo Ast.TipoDato, valor interface{}) Declaracion {
+func NewDeclaracion( /*linea int, columna int, */ id string, tipo Ast.TipoDato, valor interface{}) Declaracion {
 	nd := Declaracion{
-		Id:      id,
-		Tipo:    tipo,
-		Valor:   valor,
-		Linea:   linea,
-		Columna: columna,
+		Id:    id,
+		Tipo:  tipo,
+		Valor: valor,
+		//Linea:   linea,
+		//Columna: columna,
 	}
 	return nd
 }
 
-func (d *Declaracion) Run(scope Ast.Scope) {
+func (d Declaracion) GetTipo() Ast.TipoDato {
+	return Ast.INSTRUCCION
+}
+
+func (d Declaracion) Run(scope *Ast.Scope) interface{} {
 	//Verificar que el id no exista
 	existe := scope.Exist_actual(d.Id)
 	//Verificar que los tipos sean correctos
-	valor := d.Valor.(Ast.Expresion).GetValue(scope)
+	valor := d.Valor.(Ast.Expresion).GetValue(*scope)
 
 	if valor.Tipo == d.Tipo && !existe {
 		//El tipo es correcto y no existe en el entorno actual
@@ -48,5 +52,5 @@ func (d *Declaracion) Run(scope Ast.Scope) {
 		//Error de tipos, generar error semántico
 		fmt.Println("Error, los tipos no coinciden en la declaración")
 	}
-
+	return true
 }

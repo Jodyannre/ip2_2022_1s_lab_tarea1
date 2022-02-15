@@ -8,63 +8,93 @@ import "github.com/antlr/antlr4/runtime/Go/antlr"
 type NparserListener interface {
 	antlr.ParseTreeListener
 
-	// EnterProd_inicio is called when entering the prod_inicio production.
-	EnterProd_inicio(c *Prod_inicioContext)
+	// EnterInicio is called when entering the inicio production.
+	EnterInicio(c *InicioContext)
 
-	// EnterOp_arit is called when entering the op_arit production.
-	EnterOp_arit(c *Op_aritContext)
+	// EnterInstrucciones is called when entering the instrucciones production.
+	EnterInstrucciones(c *InstruccionesContext)
 
-	// EnterUnario is called when entering the unario production.
-	EnterUnario(c *UnarioContext)
+	// EnterInstruccion is called when entering the instruccion production.
+	EnterInstruccion(c *InstruccionContext)
 
-	// EnterProd_numero is called when entering the prod_numero production.
-	EnterProd_numero(c *Prod_numeroContext)
+	// EnterDeclaracion is called when entering the declaracion production.
+	EnterDeclaracion(c *DeclaracionContext)
 
-	// EnterProd_decimal is called when entering the prod_decimal production.
-	EnterProd_decimal(c *Prod_decimalContext)
+	// EnterAsignacion is called when entering the asignacion production.
+	EnterAsignacion(c *AsignacionContext)
 
-	// EnterOp_multi is called when entering the op_multi production.
-	EnterOp_multi(c *Op_multiContext)
+	// EnterExpresion is called when entering the expresion production.
+	EnterExpresion(c *ExpresionContext)
 
-	// EnterOp_div is called when entering the op_div production.
-	EnterOp_div(c *Op_divContext)
+	// EnterTipo is called when entering the tipo production.
+	EnterTipo(c *TipoContext)
 
-	// EnterOp_mod is called when entering the op_mod production.
-	EnterOp_mod(c *Op_modContext)
+	// EnterOperador_comparacion is called when entering the operador_comparacion production.
+	EnterOperador_comparacion(c *Operador_comparacionContext)
 
-	// EnterOp_sum is called when entering the op_sum production.
-	EnterOp_sum(c *Op_sumContext)
+	// EnterOperador_logico is called when entering the operador_logico production.
+	EnterOperador_logico(c *Operador_logicoContext)
 
-	// EnterOp_resta is called when entering the op_resta production.
-	EnterOp_resta(c *Op_restaContext)
+	// EnterOperador_aritmetico is called when entering the operador_aritmetico production.
+	EnterOperador_aritmetico(c *Operador_aritmeticoContext)
 
-	// ExitProd_inicio is called when exiting the prod_inicio production.
-	ExitProd_inicio(c *Prod_inicioContext)
+	// EnterControl_IF_simple is called when entering the control_IF_simple production.
+	EnterControl_IF_simple(c *Control_IF_simpleContext)
 
-	// ExitOp_arit is called when exiting the op_arit production.
-	ExitOp_arit(c *Op_aritContext)
+	// EnterControl_IF_entonces is called when entering the control_IF_entonces production.
+	EnterControl_IF_entonces(c *Control_IF_entoncesContext)
 
-	// ExitUnario is called when exiting the unario production.
-	ExitUnario(c *UnarioContext)
+	// EnterControl_if_entonces is called when entering the control_if_entonces production.
+	EnterControl_if_entonces(c *Control_if_entoncesContext)
 
-	// ExitProd_numero is called when exiting the prod_numero production.
-	ExitProd_numero(c *Prod_numeroContext)
+	// EnterControl_else is called when entering the control_else production.
+	EnterControl_else(c *Control_elseContext)
 
-	// ExitProd_decimal is called when exiting the prod_decimal production.
-	ExitProd_decimal(c *Prod_decimalContext)
+	// EnterFuncion_imprimir is called when entering the funcion_imprimir production.
+	EnterFuncion_imprimir(c *Funcion_imprimirContext)
 
-	// ExitOp_multi is called when exiting the op_multi production.
-	ExitOp_multi(c *Op_multiContext)
+	// ExitInicio is called when exiting the inicio production.
+	ExitInicio(c *InicioContext)
 
-	// ExitOp_div is called when exiting the op_div production.
-	ExitOp_div(c *Op_divContext)
+	// ExitInstrucciones is called when exiting the instrucciones production.
+	ExitInstrucciones(c *InstruccionesContext)
 
-	// ExitOp_mod is called when exiting the op_mod production.
-	ExitOp_mod(c *Op_modContext)
+	// ExitInstruccion is called when exiting the instruccion production.
+	ExitInstruccion(c *InstruccionContext)
 
-	// ExitOp_sum is called when exiting the op_sum production.
-	ExitOp_sum(c *Op_sumContext)
+	// ExitDeclaracion is called when exiting the declaracion production.
+	ExitDeclaracion(c *DeclaracionContext)
 
-	// ExitOp_resta is called when exiting the op_resta production.
-	ExitOp_resta(c *Op_restaContext)
+	// ExitAsignacion is called when exiting the asignacion production.
+	ExitAsignacion(c *AsignacionContext)
+
+	// ExitExpresion is called when exiting the expresion production.
+	ExitExpresion(c *ExpresionContext)
+
+	// ExitTipo is called when exiting the tipo production.
+	ExitTipo(c *TipoContext)
+
+	// ExitOperador_comparacion is called when exiting the operador_comparacion production.
+	ExitOperador_comparacion(c *Operador_comparacionContext)
+
+	// ExitOperador_logico is called when exiting the operador_logico production.
+	ExitOperador_logico(c *Operador_logicoContext)
+
+	// ExitOperador_aritmetico is called when exiting the operador_aritmetico production.
+	ExitOperador_aritmetico(c *Operador_aritmeticoContext)
+
+	// ExitControl_IF_simple is called when exiting the control_IF_simple production.
+	ExitControl_IF_simple(c *Control_IF_simpleContext)
+
+	// ExitControl_IF_entonces is called when exiting the control_IF_entonces production.
+	ExitControl_IF_entonces(c *Control_IF_entoncesContext)
+
+	// ExitControl_if_entonces is called when exiting the control_if_entonces production.
+	ExitControl_if_entonces(c *Control_if_entoncesContext)
+
+	// ExitControl_else is called when exiting the control_else production.
+	ExitControl_else(c *Control_elseContext)
+
+	// ExitFuncion_imprimir is called when exiting the funcion_imprimir production.
+	ExitFuncion_imprimir(c *Funcion_imprimirContext)
 }

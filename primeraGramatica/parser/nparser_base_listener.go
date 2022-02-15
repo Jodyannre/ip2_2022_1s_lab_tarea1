@@ -21,62 +21,92 @@ func (s *BaseNparserListener) EnterEveryRule(ctx antlr.ParserRuleContext) {}
 // ExitEveryRule is called when any rule is exited.
 func (s *BaseNparserListener) ExitEveryRule(ctx antlr.ParserRuleContext) {}
 
-// EnterProd_inicio is called when production prod_inicio is entered.
-func (s *BaseNparserListener) EnterProd_inicio(ctx *Prod_inicioContext) {}
+// EnterInicio is called when production inicio is entered.
+func (s *BaseNparserListener) EnterInicio(ctx *InicioContext) {}
 
-// ExitProd_inicio is called when production prod_inicio is exited.
-func (s *BaseNparserListener) ExitProd_inicio(ctx *Prod_inicioContext) {}
+// ExitInicio is called when production inicio is exited.
+func (s *BaseNparserListener) ExitInicio(ctx *InicioContext) {}
 
-// EnterOp_arit is called when production op_arit is entered.
-func (s *BaseNparserListener) EnterOp_arit(ctx *Op_aritContext) {}
+// EnterInstrucciones is called when production instrucciones is entered.
+func (s *BaseNparserListener) EnterInstrucciones(ctx *InstruccionesContext) {}
 
-// ExitOp_arit is called when production op_arit is exited.
-func (s *BaseNparserListener) ExitOp_arit(ctx *Op_aritContext) {}
+// ExitInstrucciones is called when production instrucciones is exited.
+func (s *BaseNparserListener) ExitInstrucciones(ctx *InstruccionesContext) {}
 
-// EnterUnario is called when production unario is entered.
-func (s *BaseNparserListener) EnterUnario(ctx *UnarioContext) {}
+// EnterInstruccion is called when production instruccion is entered.
+func (s *BaseNparserListener) EnterInstruccion(ctx *InstruccionContext) {}
 
-// ExitUnario is called when production unario is exited.
-func (s *BaseNparserListener) ExitUnario(ctx *UnarioContext) {}
+// ExitInstruccion is called when production instruccion is exited.
+func (s *BaseNparserListener) ExitInstruccion(ctx *InstruccionContext) {}
 
-// EnterProd_numero is called when production prod_numero is entered.
-func (s *BaseNparserListener) EnterProd_numero(ctx *Prod_numeroContext) {}
+// EnterDeclaracion is called when production declaracion is entered.
+func (s *BaseNparserListener) EnterDeclaracion(ctx *DeclaracionContext) {}
 
-// ExitProd_numero is called when production prod_numero is exited.
-func (s *BaseNparserListener) ExitProd_numero(ctx *Prod_numeroContext) {}
+// ExitDeclaracion is called when production declaracion is exited.
+func (s *BaseNparserListener) ExitDeclaracion(ctx *DeclaracionContext) {}
 
-// EnterProd_decimal is called when production prod_decimal is entered.
-func (s *BaseNparserListener) EnterProd_decimal(ctx *Prod_decimalContext) {}
+// EnterAsignacion is called when production asignacion is entered.
+func (s *BaseNparserListener) EnterAsignacion(ctx *AsignacionContext) {}
 
-// ExitProd_decimal is called when production prod_decimal is exited.
-func (s *BaseNparserListener) ExitProd_decimal(ctx *Prod_decimalContext) {}
+// ExitAsignacion is called when production asignacion is exited.
+func (s *BaseNparserListener) ExitAsignacion(ctx *AsignacionContext) {}
 
-// EnterOp_multi is called when production op_multi is entered.
-func (s *BaseNparserListener) EnterOp_multi(ctx *Op_multiContext) {}
+// EnterExpresion is called when production expresion is entered.
+func (s *BaseNparserListener) EnterExpresion(ctx *ExpresionContext) {}
 
-// ExitOp_multi is called when production op_multi is exited.
-func (s *BaseNparserListener) ExitOp_multi(ctx *Op_multiContext) {}
+// ExitExpresion is called when production expresion is exited.
+func (s *BaseNparserListener) ExitExpresion(ctx *ExpresionContext) {}
 
-// EnterOp_div is called when production op_div is entered.
-func (s *BaseNparserListener) EnterOp_div(ctx *Op_divContext) {}
+// EnterTipo is called when production tipo is entered.
+func (s *BaseNparserListener) EnterTipo(ctx *TipoContext) {}
 
-// ExitOp_div is called when production op_div is exited.
-func (s *BaseNparserListener) ExitOp_div(ctx *Op_divContext) {}
+// ExitTipo is called when production tipo is exited.
+func (s *BaseNparserListener) ExitTipo(ctx *TipoContext) {}
 
-// EnterOp_mod is called when production op_mod is entered.
-func (s *BaseNparserListener) EnterOp_mod(ctx *Op_modContext) {}
+// EnterOperador_comparacion is called when production operador_comparacion is entered.
+func (s *BaseNparserListener) EnterOperador_comparacion(ctx *Operador_comparacionContext) {}
 
-// ExitOp_mod is called when production op_mod is exited.
-func (s *BaseNparserListener) ExitOp_mod(ctx *Op_modContext) {}
+// ExitOperador_comparacion is called when production operador_comparacion is exited.
+func (s *BaseNparserListener) ExitOperador_comparacion(ctx *Operador_comparacionContext) {}
 
-// EnterOp_sum is called when production op_sum is entered.
-func (s *BaseNparserListener) EnterOp_sum(ctx *Op_sumContext) {}
+// EnterOperador_logico is called when production operador_logico is entered.
+func (s *BaseNparserListener) EnterOperador_logico(ctx *Operador_logicoContext) {}
 
-// ExitOp_sum is called when production op_sum is exited.
-func (s *BaseNparserListener) ExitOp_sum(ctx *Op_sumContext) {}
+// ExitOperador_logico is called when production operador_logico is exited.
+func (s *BaseNparserListener) ExitOperador_logico(ctx *Operador_logicoContext) {}
 
-// EnterOp_resta is called when production op_resta is entered.
-func (s *BaseNparserListener) EnterOp_resta(ctx *Op_restaContext) {}
+// EnterOperador_aritmetico is called when production operador_aritmetico is entered.
+func (s *BaseNparserListener) EnterOperador_aritmetico(ctx *Operador_aritmeticoContext) {}
 
-// ExitOp_resta is called when production op_resta is exited.
-func (s *BaseNparserListener) ExitOp_resta(ctx *Op_restaContext) {}
+// ExitOperador_aritmetico is called when production operador_aritmetico is exited.
+func (s *BaseNparserListener) ExitOperador_aritmetico(ctx *Operador_aritmeticoContext) {}
+
+// EnterControl_IF_simple is called when production control_IF_simple is entered.
+func (s *BaseNparserListener) EnterControl_IF_simple(ctx *Control_IF_simpleContext) {}
+
+// ExitControl_IF_simple is called when production control_IF_simple is exited.
+func (s *BaseNparserListener) ExitControl_IF_simple(ctx *Control_IF_simpleContext) {}
+
+// EnterControl_IF_entonces is called when production control_IF_entonces is entered.
+func (s *BaseNparserListener) EnterControl_IF_entonces(ctx *Control_IF_entoncesContext) {}
+
+// ExitControl_IF_entonces is called when production control_IF_entonces is exited.
+func (s *BaseNparserListener) ExitControl_IF_entonces(ctx *Control_IF_entoncesContext) {}
+
+// EnterControl_if_entonces is called when production control_if_entonces is entered.
+func (s *BaseNparserListener) EnterControl_if_entonces(ctx *Control_if_entoncesContext) {}
+
+// ExitControl_if_entonces is called when production control_if_entonces is exited.
+func (s *BaseNparserListener) ExitControl_if_entonces(ctx *Control_if_entoncesContext) {}
+
+// EnterControl_else is called when production control_else is entered.
+func (s *BaseNparserListener) EnterControl_else(ctx *Control_elseContext) {}
+
+// ExitControl_else is called when production control_else is exited.
+func (s *BaseNparserListener) ExitControl_else(ctx *Control_elseContext) {}
+
+// EnterFuncion_imprimir is called when production funcion_imprimir is entered.
+func (s *BaseNparserListener) EnterFuncion_imprimir(ctx *Funcion_imprimirContext) {}
+
+// ExitFuncion_imprimir is called when production funcion_imprimir is exited.
+func (s *BaseNparserListener) ExitFuncion_imprimir(ctx *Funcion_imprimirContext) {}

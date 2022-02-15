@@ -5,5 +5,9 @@ type Expresion interface {
 }
 
 type Instruccion interface {
-	Run(entorno Scope) interface{}
+	Run(entorno *Scope) interface{}
+}
+
+type Abstracto interface {
+	GetTipo() TipoDato
 }

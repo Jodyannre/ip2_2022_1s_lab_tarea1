@@ -15,6 +15,9 @@ const (
 	IF_ENTONCES
 	ASIGNACION
 	IMPRIMIR
+	EXPRESION
+	INSTRUCCION
+	ERROR
 )
 
 type TipoRetornado struct {

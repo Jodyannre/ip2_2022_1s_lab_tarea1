@@ -9,6 +9,10 @@ type Identificador struct {
 	Valor string
 }
 
+func (p Identificador) GetTipo() Ast.TipoDato {
+	return Ast.EXPRESION
+}
+
 func (p Identificador) GetValue(scope Ast.Scope) Ast.TipoRetornado {
 	//Buscar el símbolo en la tabla de símbolos y retornar el valor
 	//Verificar que el id no exista

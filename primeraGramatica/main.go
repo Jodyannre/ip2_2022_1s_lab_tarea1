@@ -1,57 +1,48 @@
 package main
 
 import (
-	"fmt"
+
 	//"primeraGramatica/Analizador/Ast"
 
-	"math"
+	"fmt"
 	"primeraGramatica/parser"
 
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
-type Visitor struct {
+type Visitador struct {
 	*parser.BaseNparserListener
+	consola string
 }
 
-func NewVisitor() *Visitor {
-	return new(Visitor)
+func NewVisitor() *Visitador {
+	return new(Visitador)
 }
 
-func (v *Visitor) ExitProd_inicio(ctx *parser.Prod_inicioContext) {
-	/*fmt.Println("Ingreso>>>>>>>>>>>>>>>")
-	data, err := json.MarshalIndent(ctx, "", "  ")
-	if err != nil {
-		panic(err)
-	}
-	stringEsQuery := string(data)
-	fmt.Println(stringEsQuery)
-	*/
+func (v *Visitador) ExitInicio(ctx *parser.InicioContext) {
+	fmt.Println("Ingreso>>>>>>>>>>>>>>>")
+	resultado := ctx.GetLista()
+	fmt.Println(resultado)
+	//Desde aquí ya tengo todo el resultado del parser, listo para ejecutar
 }
 
-func (v *Visitor) VisitProd_numero(ctx *parser.Prod_numeroContext) int {
-	fmt.Println(ctx.GetText())
-	fmt.Println("Entro aquí")
-	fmt.Println("me cago")
-	//n, _ := strconv.ParseInt(ctx.GetText(), 0, 64)
-	return 5
+type Uno struct {
+	valor int
 }
 
-func (v *Visitor) ExitOp_arit(ctx *parser.Op_aritContext) {
-	/*
-		izq := ctx.GetOp_left().GetText()
-		der := ctx.GetOp_right().GetText()
-		fmt.Println("Estos son números")
-		fmt.Println(izq)
-		fmt.Println(der)
-	*/
-
+func (u *Uno) Modificar() {
+	u.valor += 1
 }
 
 func main() {
-	fmt.Println(math.Mod(-8.0, 66.0))
+	/*
+		var input string = `declarar variable integer = <5>;
+		declarar variable2 real = <5.5>;
+		`*/
+	var input string = `If: (5>6) [declarar variable1 integer=<5>; 
+	declarar variable1 integer=<5>;
+	declarar variable4 real=<5.5>;];`
 
-	var input string = "hola mundo"
 	//Obteniendo el input
 	cadena_entrada := antlr.NewInputStream(input)
 

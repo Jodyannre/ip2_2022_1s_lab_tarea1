@@ -47,6 +47,10 @@ func NewOperation(op_izq dato_interface.Expresion, operador string, op_der dato_
 	return nuevo
 }
 
+func (op Operacion) GetTipo() dato_interface.TipoDato {
+	return dato_interface.EXPRESION
+}
+
 func (op Operacion) GetValue(entorno dato_interface.Scope) dato_interface.TipoRetornado {
 	var tipo_izq dato_interface.TipoRetornado
 	var tipo_der dato_interface.TipoRetornado
