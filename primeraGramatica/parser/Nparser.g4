@@ -43,11 +43,11 @@ instrucciones returns [*arraylist.List list]
 ;
 
 instruccion returns[interface{} ex] 
-				:expresion 			{$ex = $expresion.ex}
-				|control_IF_simple	{$ex = $control_IF_simple.ex} 
+				:control_IF_simple	{$ex = $control_IF_simple.ex} 
 			    |asignacion 		{$ex = $asignacion.ex} 	
 				|declaracion		{$ex = $declaracion.ex}
 			    |funcion_imprimir 	{$ex = $funcion_imprimir.ex}
+				//|expresion 			{$ex = $expresion.ex}
 			    
 			     
 ;
@@ -55,23 +55,30 @@ instruccion returns[interface{} ex]
 declaracion returns[Ast.Instruccion ex] 	
 				:DECLARAR ID tipo IGUAL MENOR expresion 
 				{
-					$ex = Expresiones.NewDeclaracion($ID.text,$tipo.ex,$expresion.ex)
+					fila:= $ID.line
+					columna:= $MENOR.pos
+					columna++
+					$ex = Expresiones.NewDeclaracion($ID.text,$tipo.ex,$expresion.ex,fila,columna)
 				}
 				MAYOR PUNTOCOMA
 				|DECLARAR ID tipo 
 				{
-					$ex = Expresiones.NewDeclaracion($ID.text,$tipo.ex,nil)
+					fila:= $ID.line
+					columna:= $DECLARAR.pos
+					columna++
+					$ex = Expresiones.NewDeclaracion($ID.text,$tipo.ex,nil,fila,columna)
 				}
 				PUNTOCOMA
 ;
 
 
 asignacion returns[Ast.Instruccion ex]
-				: <assoc=right> ID IGUAL MENOR expresion 
+				: ID IGUAL MENOR expresion 
 					{
-						//linea = strconv.Atoi($ID.line)
-						//columna = strconv.Atoi($ID.pos)
-						$ex = Expresiones.NewAsignacion($ID.text, $expresion.ex)
+						fila := $ID.line
+						columna := $MENOR.pos
+						columna++
+						$ex = Expresiones.NewAsignacion($ID.text, $expresion.ex,fila,columna)
 					}
 				MAYOR PUNTOCOMA
 ;
@@ -82,7 +89,6 @@ expresion returns[Ast.Expresion ex]
 						{
 							operador := $RESTA.text
 							$ex = Expresiones.NewOperation($op_left.ex,operador,nil,true)
-
 						}	
 			  	|op_left=expresion operador_logico op_right=expresion
 				  		{
@@ -239,7 +245,10 @@ control_else returns[Ast.Instruccion ex]
 funcion_imprimir returns[Ast.Instruccion ex] 
 			:SENTENCIA PUNTO CONSOLA PAR_IZQ expresion 
 			{
-				$ex = Instrucciones.NewImprimir($expresion.ex)
+				fila:= $SENTENCIA.line
+				columna:= $PAR_IZQ.pos
+				columna++
+				$ex = Instrucciones.NewImprimir($expresion.ex,fila,columna)
 			}
 			PAR_DER PUNTOCOMA
 ;

@@ -3,18 +3,18 @@ package Ast
 type Simbolo struct {
 	Identificador string
 	Valor         interface{}
-	Linea         int
+	Fila          int
 	Columna       int
 	Tipo          TipoDato
 }
 
-func NewSimbolo(Identificador string, Valor interface{}, Linea int, Columna int, Tipo TipoDato) Simbolo {
+func NewSimbolo(identificador string, valor interface{}, fila int, columna int, tipo TipoDato) Simbolo {
 	simbolo := Simbolo{
-		Identificador: Identificador,
-		Valor:         Valor,
-		Linea:         Linea,
-		Columna:       Columna,
-		Tipo:          Tipo,
+		Identificador: identificador,
+		Valor:         valor,
+		Fila:          fila,
+		Columna:       columna,
+		Tipo:          tipo,
 	}
 	return simbolo
 }

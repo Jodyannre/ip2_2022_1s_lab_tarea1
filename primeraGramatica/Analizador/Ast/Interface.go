@@ -9,5 +9,5 @@ type Instruccion interface {
 }
 
 type Abstracto interface {
-	GetTipo() TipoDato
+	GetTipo() (TipoDato, TipoDato)
 }

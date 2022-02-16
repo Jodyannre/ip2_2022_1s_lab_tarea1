@@ -24,8 +24,8 @@ func NewIF(condicion Ast.Expresion, instrucciones *arraylist.List, lista *arrayl
 	return nif
 }
 
-func (i IF) GetTipo() Ast.TipoDato {
-	return Ast.INSTRUCCION
+func (i IF) GetTipo() (Ast.TipoDato, Ast.TipoDato) {
+	return Ast.INSTRUCCION, Ast.IF
 }
 
 func (i IF) Run(scope *Ast.Scope) interface{} {
@@ -62,10 +62,11 @@ func GetResultado(i IF, scope *Ast.Scope, pos int) Ast.TipoRetornado {
 			n := 0
 			for n < i.Instrucciones.Len() {
 				elemento := i.Instrucciones.GetValue(n).(Ast.Abstracto)
-				if elemento.GetTipo() == Ast.EXPRESION {
+				tipo_abstracto, _ := elemento.GetTipo()
+				if tipo_abstracto == Ast.EXPRESION {
 					instruccion := i.Instrucciones.GetValue(n).(Ast.Expresion)
 					instruccion.GetValue(*scope)
-				} else if elemento.GetTipo() == Ast.INSTRUCCION {
+				} else if tipo_abstracto == Ast.INSTRUCCION {
 					instruccion := i.Instrucciones.GetValue(n).(Ast.Instruccion)
 					instruccion.Run(scope)
 				}

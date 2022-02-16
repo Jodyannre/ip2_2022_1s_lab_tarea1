@@ -1,31 +1,33 @@
 package Expresiones
 
 import (
-	"fmt"
+	//"fmt"
 	"primeraGramatica/Analizador/Ast"
+	"primeraGramatica/Analizador/Errores"
+	"strconv"
 )
 
 type Declaracion struct {
 	Id      string
 	Tipo    Ast.TipoDato
 	Valor   interface{}
-	Linea   int
+	Fila    int
 	Columna int
 }
 
-func NewDeclaracion( /*linea int, columna int, */ id string, tipo Ast.TipoDato, valor interface{}) Declaracion {
+func NewDeclaracion(id string, tipo Ast.TipoDato, valor interface{}, fila int, columna int) Declaracion {
 	nd := Declaracion{
-		Id:    id,
-		Tipo:  tipo,
-		Valor: valor,
-		//Linea:   linea,
-		//Columna: columna,
+		Id:      id,
+		Tipo:    tipo,
+		Valor:   valor,
+		Fila:    fila,
+		Columna: columna,
 	}
 	return nd
 }
 
-func (d Declaracion) GetTipo() Ast.TipoDato {
-	return Ast.INSTRUCCION
+func (d Declaracion) GetTipo() (Ast.TipoDato, Ast.TipoDato) {
+	return Ast.INSTRUCCION, Ast.DECLARACION
 }
 
 func (d Declaracion) Run(scope *Ast.Scope) interface{} {
@@ -40,17 +42,38 @@ func (d Declaracion) Run(scope *Ast.Scope) interface{} {
 		nSimbolo := Ast.Simbolo{
 			Identificador: d.Id,
 			Valor:         valor,
-			Linea:         d.Linea,
+			Fila:          d.Fila,
 			Columna:       d.Columna,
 			Tipo:          d.Tipo,
 		}
 		scope.Add(nSimbolo)
 	} else if existe {
 		//Ya existe y generar error semántico
-		fmt.Println("Error, ese elemento ya existe en el ámbito local")
+		//fmt.Println("Error, ese elemento ya existe en el ámbito local")
+		msg := "Semantic error, the element \"" + d.Id + "\" already exist in this scope." +
+			" -- Line:" + strconv.Itoa(d.Fila) + " Column: " + strconv.Itoa(d.Columna)
+		nError := Errores.NewError(d.Fila, d.Columna, msg)
+		nError.Tipo = Ast.ERROR_SEMANTICO
+		return Ast.TipoRetornado{
+			Tipo:  Ast.ERROR,
+			Valor: nError,
+		}
 	} else {
 		//Error de tipos, generar error semántico
-		fmt.Println("Error, los tipos no coinciden en la declaración")
+		//fmt.Println("Error, los tipos no coinciden en la declaración")
+		msg := "Semantic error, can't assign " + Ast.ValorTipoDato[int(valor.Tipo)] +
+			"type to " + Ast.ValorTipoDato[int(d.Tipo)] +
+			"type. -- Line: " + strconv.Itoa(d.Fila) +
+			" Column: " + strconv.Itoa(d.Columna)
+		nError := Errores.NewError(d.Fila, d.Columna, msg)
+		nError.Tipo = Ast.ERROR_SEMANTICO
+		return Ast.TipoRetornado{
+			Tipo:  Ast.ERROR,
+			Valor: nError,
+		}
 	}
-	return true
+	return Ast.TipoRetornado{
+		Tipo:  Ast.BOOLEAN,
+		Valor: true,
+	}
 }

@@ -9,8 +9,8 @@ type Identificador struct {
 	Valor string
 }
 
-func (p Identificador) GetTipo() Ast.TipoDato {
-	return Ast.EXPRESION
+func (p Identificador) GetTipo() (Ast.TipoDato, Ast.TipoDato) {
+	return Ast.EXPRESION, Ast.IDENTIFICADOR
 }
 
 func (p Identificador) GetValue(scope Ast.Scope) Ast.TipoRetornado {

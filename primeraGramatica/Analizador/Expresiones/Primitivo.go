@@ -16,8 +16,8 @@ func (p Primitivo) GetValue(entorno Ast.Scope) Ast.TipoRetornado {
 	}
 }
 
-func (p Primitivo) GetTipo() Ast.TipoDato {
-	return Ast.EXPRESION
+func (p Primitivo) GetTipo() (Ast.TipoDato, Ast.TipoDato) {
+	return Ast.EXPRESION, Ast.PRIMITIVO
 }
 
 func NewPrimitivo(val interface{}, tipo Ast.TipoDato) Primitivo {
