@@ -81,6 +81,19 @@ func (op Operacion) GetValue(entorno dato_interface.Scope) dato_interface.TipoRe
 			}
 		} else if result_dominante == dato_interface.REAL {
 
+			if tipo_izq.Tipo == dato_interface.INTEGER {
+				tipo_izq = dato_interface.TipoRetornado{
+					Valor: float64(tipo_izq.Valor.(int)),
+					Tipo:  dato_interface.REAL,
+				}
+			}
+			if tipo_der.Tipo == dato_interface.INTEGER {
+				tipo_der = dato_interface.TipoRetornado{
+					Valor: float64(tipo_der.Valor.(int)),
+					Tipo:  dato_interface.REAL,
+				}
+			}
+
 			return dato_interface.TipoRetornado{
 				Tipo:  result_dominante,
 				Valor: tipo_izq.Valor.(float64) + tipo_der.Valor.(float64),
@@ -139,6 +152,19 @@ func (op Operacion) GetValue(entorno dato_interface.Scope) dato_interface.TipoRe
 			}
 		} else if result_dominante == dato_interface.REAL {
 
+			if tipo_izq.Tipo == dato_interface.INTEGER {
+				tipo_izq = dato_interface.TipoRetornado{
+					Valor: float64(tipo_izq.Valor.(int)),
+					Tipo:  dato_interface.REAL,
+				}
+			}
+			if tipo_der.Tipo == dato_interface.INTEGER {
+				tipo_der = dato_interface.TipoRetornado{
+					Valor: float64(tipo_der.Valor.(int)),
+					Tipo:  dato_interface.REAL,
+				}
+			}
+
 			return dato_interface.TipoRetornado{
 				Tipo:  result_dominante,
 				Valor: tipo_izq.Valor.(float64) - tipo_der.Valor.(float64),
@@ -171,6 +197,18 @@ func (op Operacion) GetValue(entorno dato_interface.Scope) dato_interface.TipoRe
 			}
 
 		} else if result_dominante == dato_interface.REAL {
+			if tipo_izq.Tipo == dato_interface.INTEGER {
+				tipo_izq = dato_interface.TipoRetornado{
+					Valor: float64(tipo_izq.Valor.(int)),
+					Tipo:  dato_interface.REAL,
+				}
+			}
+			if tipo_der.Tipo == dato_interface.INTEGER {
+				tipo_der = dato_interface.TipoRetornado{
+					Valor: float64(tipo_der.Valor.(int)),
+					Tipo:  dato_interface.REAL,
+				}
+			}
 			return dato_interface.TipoRetornado{
 				Tipo:  result_dominante,
 				Valor: tipo_izq.Valor.(float64) * tipo_der.Valor.(float64),
@@ -204,6 +242,18 @@ func (op Operacion) GetValue(entorno dato_interface.Scope) dato_interface.TipoRe
 			}
 
 		} else if result_dominante == dato_interface.REAL {
+			if tipo_izq.Tipo == dato_interface.INTEGER {
+				tipo_izq = dato_interface.TipoRetornado{
+					Valor: float64(tipo_izq.Valor.(int)),
+					Tipo:  dato_interface.REAL,
+				}
+			}
+			if tipo_der.Tipo == dato_interface.INTEGER {
+				tipo_der = dato_interface.TipoRetornado{
+					Valor: float64(tipo_der.Valor.(int)),
+					Tipo:  dato_interface.REAL,
+				}
+			}
 			return dato_interface.TipoRetornado{
 				Tipo:  result_dominante,
 				Valor: tipo_izq.Valor.(float64) / tipo_der.Valor.(float64),
@@ -237,6 +287,18 @@ func (op Operacion) GetValue(entorno dato_interface.Scope) dato_interface.TipoRe
 			}
 
 		} else if result_dominante == dato_interface.REAL {
+			if tipo_izq.Tipo == dato_interface.INTEGER {
+				tipo_izq = dato_interface.TipoRetornado{
+					Valor: float64(tipo_izq.Valor.(int)),
+					Tipo:  dato_interface.REAL,
+				}
+			}
+			if tipo_der.Tipo == dato_interface.INTEGER {
+				tipo_der = dato_interface.TipoRetornado{
+					Valor: float64(tipo_der.Valor.(int)),
+					Tipo:  dato_interface.REAL,
+				}
+			}
 			return dato_interface.TipoRetornado{
 				Tipo:  result_dominante,
 				Valor: math.Mod(tipo_izq.Valor.(float64), tipo_der.Valor.(float64)),

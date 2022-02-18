@@ -49,9 +49,9 @@ FALSE           : F A L S E;
 PUBLICO         : P U B L I C O;
 PRIVADO         : P R I V A D O;
 MAIN            : M A I N;
-PRINCIPAL       : P R I N C I P A L;
-METODO          : M E T O D O;
-CLASE           : C L A S E;
+//PRINCIPAL       : P R I N C I P A L;
+//METODO          : M E T O D O;
+//CLASE           : C L A S E;
 DECLARAR        : D E C L A R A R;
 
 NUMERO          : [0-9]+;

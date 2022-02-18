@@ -88,7 +88,7 @@
         });
 
         $("#aCompile").click(function (e) {
-            //compilar();
+            compilar();
             getConsola(); //muestra la cadena en la consola
         });
 
@@ -248,7 +248,7 @@
             };
 
             var xhr = new XMLHttpRequest();
-            xhr.open('PUT', 'parse', true);
+            xhr.open('POST', 'parse', true);
             xhr.onload = function (e) { console.log('Parseo realizado...') };
             //Indicar que se envia un Json
             xhr.setRequestHeader('Content-Type', 'application/json');
@@ -261,7 +261,7 @@
             var tabla;
             alert("vino")
             var getCconsola = $.ajax({
-                url: 'http://127.0.0.1:3000/getConsola',
+                url: 'http://localhost:8080/getConsola',
                 type: 'GET',
                 contentType: "application/json;charset=utf-8",
                 success: function (data, textStatus, xhr) {

@@ -16,7 +16,7 @@ func (p Identificador) GetTipo() (Ast.TipoDato, Ast.TipoDato) {
 func (p Identificador) GetValue(scope Ast.Scope) Ast.TipoRetornado {
 	//Buscar el símbolo en la tabla de símbolos y retornar el valor
 	//Verificar que el id no exista
-	if scope.Exist_actual(p.Valor) {
+	if scope.Exist(p.Valor) {
 		//Existe el identificar y retornar el valor
 		simbolo := scope.GetSimbolo(p.Valor)
 		return simbolo.Valor.(Ast.TipoRetornado)

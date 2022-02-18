@@ -1,4 +1,4 @@
-// Code generated from Nparser.g4 by ANTLR 4.9.3. DO NOT EDIT.
+// Code generated from c:\Projects\Go\src\ServidorPrimeraGramatica\primeraGramatica\parser\Nparser.g4 by ANTLR 4.8. DO NOT EDIT.
 
 package parser // Nparser
 
@@ -136,6 +136,9 @@ var parserATN = []uint16{
 	2, 2, 265, 31, 3, 2, 2, 2, 14, 54, 71, 89, 121, 143, 145, 156, 162, 168,
 	180, 230, 235,
 }
+var deserializer = antlr.NewATNDeserializer(nil)
+var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
+
 var literalNames = []string{
 	"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
 	"", "", "':'", "'.'", "';'", "'>='", "'>'", "'<'", "'='", "'%'", "'*'",
@@ -156,25 +159,21 @@ var ruleNames = []string{
 	"control_IF_simple", "control_IF_entonces", "control_if_entonces", "control_else",
 	"funcion_imprimir",
 }
+var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
+
+func init() {
+	for index, ds := range deserializedATN.DecisionToState {
+		decisionToDFA[index] = antlr.NewDFA(ds, index)
+	}
+}
 
 type Nparser struct {
 	*antlr.BaseParser
 }
 
-// NewNparser produces a new parser instance for the optional input antlr.TokenStream.
-//
-// The *Nparser instance produced may be reused by calling the SetInputStream method.
-// The initial parser configuration is expensive to construct, and the object is not thread-safe;
-// however, if used within a Golang sync.Pool, the construction cost amortizes well and the
-// objects can be used in a thread-safe manner.
 func NewNparser(input antlr.TokenStream) *Nparser {
 	this := new(Nparser)
-	deserializer := antlr.NewATNDeserializer(nil)
-	deserializedATN := deserializer.DeserializeFromUInt16(parserATN)
-	decisionToDFA := make([]*antlr.DFA, len(deserializedATN.DecisionToState))
-	for index, ds := range deserializedATN.DecisionToState {
-		decisionToDFA[index] = antlr.NewDFA(ds, index)
-	}
+
 	this.BaseParser = antlr.NewBaseParser(input)
 
 	this.Interpreter = antlr.NewParserATNSimulator(this, deserializedATN, decisionToDFA, antlr.NewPredictionContextCache())
@@ -389,22 +388,7 @@ func (s *InicioContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *InicioContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterInicio(s)
-	}
-}
-
-func (s *InicioContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitInicio(s)
-	}
-}
-
 func (p *Nparser) Inicio() (localctx IInicioContext) {
-	this := p
-	_ = this
-
 	localctx = NewInicioContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 0, NparserRULE_inicio)
 
@@ -603,22 +587,7 @@ func (s *InstruccionesContext) ToStringTree(ruleNames []string, recog antlr.Reco
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *InstruccionesContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterInstrucciones(s)
-	}
-}
-
-func (s *InstruccionesContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitInstrucciones(s)
-	}
-}
-
 func (p *Nparser) Instrucciones() (localctx IInstruccionesContext) {
-	this := p
-	_ = this
-
 	localctx = NewInstruccionesContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 2, NparserRULE_instrucciones)
 
@@ -820,22 +789,7 @@ func (s *InstruccionContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *InstruccionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterInstruccion(s)
-	}
-}
-
-func (s *InstruccionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitInstruccion(s)
-	}
-}
-
 func (p *Nparser) Instruccion() (localctx IInstruccionContext) {
-	this := p
-	_ = this
-
 	localctx = NewInstruccionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 4, NparserRULE_instruccion)
 
@@ -1066,22 +1020,7 @@ func (s *DeclaracionContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *DeclaracionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterDeclaracion(s)
-	}
-}
-
-func (s *DeclaracionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitDeclaracion(s)
-	}
-}
-
 func (p *Nparser) Declaracion() (localctx IDeclaracionContext) {
-	this := p
-	_ = this
-
 	localctx = NewDeclaracionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 6, NparserRULE_declaracion)
 
@@ -1352,22 +1291,7 @@ func (s *AsignacionContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *AsignacionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterAsignacion(s)
-	}
-}
-
-func (s *AsignacionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitAsignacion(s)
-	}
-}
-
 func (p *Nparser) Asignacion() (localctx IAsignacionContext) {
-	this := p
-	_ = this
-
 	localctx = NewAsignacionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 8, NparserRULE_asignacion)
 
@@ -1692,26 +1616,11 @@ func (s *ExpresionContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *ExpresionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterExpresion(s)
-	}
-}
-
-func (s *ExpresionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitExpresion(s)
-	}
-}
-
 func (p *Nparser) Expresion() (localctx IExpresionContext) {
 	return p.expresion(0)
 }
 
 func (p *Nparser) expresion(_p int) (localctx IExpresionContext) {
-	this := p
-	_ = this
-
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
 	_parentState := p.GetState()
 	localctx = NewExpresionContext(p, p.GetParserRuleContext(), _parentState)
@@ -2241,22 +2150,7 @@ func (s *TipoContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *TipoContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterTipo(s)
-	}
-}
-
-func (s *TipoContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitTipo(s)
-	}
-}
-
 func (p *Nparser) Tipo() (localctx ITipoContext) {
-	this := p
-	_ = this
-
 	localctx = NewTipoContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 12, NparserRULE_tipo)
 
@@ -2406,22 +2300,7 @@ func (s *Operador_comparacionContext) ToStringTree(ruleNames []string, recog ant
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *Operador_comparacionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterOperador_comparacion(s)
-	}
-}
-
-func (s *Operador_comparacionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitOperador_comparacion(s)
-	}
-}
-
 func (p *Nparser) Operador_comparacion() (localctx IOperador_comparacionContext) {
-	this := p
-	_ = this
-
 	localctx = NewOperador_comparacionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 14, NparserRULE_operador_comparacion)
 
@@ -2573,22 +2452,7 @@ func (s *Operador_logicoContext) ToStringTree(ruleNames []string, recog antlr.Re
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *Operador_logicoContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterOperador_logico(s)
-	}
-}
-
-func (s *Operador_logicoContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitOperador_logico(s)
-	}
-}
-
 func (p *Nparser) Operador_logico() (localctx IOperador_logicoContext) {
-	this := p
-	_ = this
-
 	localctx = NewOperador_logicoContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 16, NparserRULE_operador_logico)
 
@@ -2785,22 +2649,7 @@ func (s *Operador_aritmeticoContext) ToStringTree(ruleNames []string, recog antl
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *Operador_aritmeticoContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterOperador_aritmetico(s)
-	}
-}
-
-func (s *Operador_aritmeticoContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitOperador_aritmetico(s)
-	}
-}
-
 func (p *Nparser) Operador_aritmetico() (localctx IOperador_aritmeticoContext) {
-	this := p
-	_ = this
-
 	localctx = NewOperador_aritmeticoContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 18, NparserRULE_operador_aritmetico)
 
@@ -3111,22 +2960,7 @@ func (s *Control_IF_simpleContext) ToStringTree(ruleNames []string, recog antlr.
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *Control_IF_simpleContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterControl_IF_simple(s)
-	}
-}
-
-func (s *Control_IF_simpleContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitControl_IF_simple(s)
-	}
-}
-
 func (p *Nparser) Control_IF_simple() (localctx IControl_IF_simpleContext) {
-	this := p
-	_ = this
-
 	localctx = NewControl_IF_simpleContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 20, NparserRULE_control_IF_simple)
 
@@ -3566,22 +3400,7 @@ func (s *Control_IF_entoncesContext) ToStringTree(ruleNames []string, recog antl
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *Control_IF_entoncesContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterControl_IF_entonces(s)
-	}
-}
-
-func (s *Control_IF_entoncesContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitControl_IF_entonces(s)
-	}
-}
-
 func (p *Nparser) Control_IF_entonces() (localctx IControl_IF_entoncesContext) {
-	this := p
-	_ = this
-
 	localctx = NewControl_IF_entoncesContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 22, NparserRULE_control_IF_entonces)
 
@@ -3787,22 +3606,7 @@ func (s *Control_if_entoncesContext) ToStringTree(ruleNames []string, recog antl
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *Control_if_entoncesContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterControl_if_entonces(s)
-	}
-}
-
-func (s *Control_if_entoncesContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitControl_if_entonces(s)
-	}
-}
-
 func (p *Nparser) Control_if_entonces() (localctx IControl_if_entoncesContext) {
-	this := p
-	_ = this
-
 	localctx = NewControl_if_entoncesContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 24, NparserRULE_control_if_entonces)
 
@@ -4005,22 +3809,7 @@ func (s *Control_elseContext) ToStringTree(ruleNames []string, recog antlr.Recog
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *Control_elseContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterControl_else(s)
-	}
-}
-
-func (s *Control_elseContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitControl_else(s)
-	}
-}
-
 func (p *Nparser) Control_else() (localctx IControl_elseContext) {
-	this := p
-	_ = this
-
 	localctx = NewControl_elseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 26, NparserRULE_control_else)
 
@@ -4214,22 +4003,7 @@ func (s *Funcion_imprimirContext) ToStringTree(ruleNames []string, recog antlr.R
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *Funcion_imprimirContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.EnterFuncion_imprimir(s)
-	}
-}
-
-func (s *Funcion_imprimirContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(NparserListener); ok {
-		listenerT.ExitFuncion_imprimir(s)
-	}
-}
-
 func (p *Nparser) Funcion_imprimir() (localctx IFuncion_imprimirContext) {
-	this := p
-	_ = this
-
 	localctx = NewFuncion_imprimirContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 28, NparserRULE_funcion_imprimir)
 
@@ -4324,9 +4098,6 @@ func (p *Nparser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) 
 }
 
 func (p *Nparser) Expresion_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	this := p
-	_ = this
-
 	switch predIndex {
 	case 0:
 		return p.Precpred(p.GetParserRuleContext(), 11)

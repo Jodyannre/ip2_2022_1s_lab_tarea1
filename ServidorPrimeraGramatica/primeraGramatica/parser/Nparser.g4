@@ -7,9 +7,9 @@ options {
 }
 
 @header {
-  import "primeraGramatica/Analizador/Ast"
-  import "primeraGramatica/Analizador/Expresiones"
-  import "primeraGramatica/Analizador/Instrucciones"
+  import "ServidorPrimeraGramatica/primeraGramatica/Analizador/Ast"
+  import "ServidorPrimeraGramatica/primeraGramatica/Analizador/Expresiones"
+  import "ServidorPrimeraGramatica/primeraGramatica/Analizador/Instrucciones"
   import "github.com/colegno/arraylist"
   import "strings"
 }
@@ -17,7 +17,7 @@ options {
 @members{
 
 }
-
+/*
 inicio returns[*arraylist.List lista] 
 				: instrucciones	
 				{
@@ -25,10 +25,21 @@ inicio returns[*arraylist.List lista]
 					//fmt.Println($lista)
 				}
 ;
-/* 
-inicio : PUBLICO MAIN DOSPUNTOS ID CORCHETE_IZQ ID PAR_IZQ STRING LLAVE_IZQ LLAVE_DER PAR_DER DOSPUNTOS ID CORCHETE_IZQ instrucciones CORCHETE_DER CORCHETE_DER 
+inicio returns[*arraylist.List lista]
+@init{
+	$lista = arraylist.New()
+}
+:PUBLICO MAIN DOSPUNTOS ID CORCHETE_IZQ ID PAR_IZQ STRING LLAVE_IZQ LLAVE_DER PAR_DER DOSPUNTOS ID CORCHETE_IZQ 
+instrucciones {} 
+CORCHETE_DER CORCHETE_DER 
 ;
 */
+inicio returns[*arraylist.List lista]
+:PUBLICO MAIN DOSPUNTOS ID CORCHETE_IZQ ID PAR_IZQ STRING LLAVE_IZQ LLAVE_DER PAR_DER DOSPUNTOS ID CORCHETE_IZQ
+instrucciones {$lista = $instrucciones.list} 
+CORCHETE_DER CORCHETE_DER
+;
+
 
 instrucciones returns [*arraylist.List list]
 			@init{

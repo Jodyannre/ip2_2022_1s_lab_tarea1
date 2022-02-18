@@ -15,30 +15,35 @@ import (
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
-func Principal() {
+func Principal(input string) string {
 	/*
-		var input string = `declarar variable integer = <5>;
-		declarar variable2 real = <5.5>;
-		`*/
-	var input string = `
-	##
-	variable2 declarar real = <6.6>;
-	declarar variable1 integer = <5>;
-	declarar cadena1 string = <"hola">;
-	if: (3>=5)[
-		variable1 = <16>;
-		variable1 = <variable1 + 1>;
-		variable4 = <"hola2">;
-		sentencia.consola(true + 1);
-		sentencia.consola("prueba de un string");
-	] entonces if:(true) [
-		declarar cadena2 string = <"mundo">;
-		sentencia.consola(cadena1+cadena2);
-	] entonces [
-		sentencia.consola("Estoy dentro del else");
-	];
-	sentencia.consola(cadena2);
-	`
+			var input string = `declarar variable integer = <5>;
+			declarar variable2 real = <5.5>;
+			`
+
+
+		var input string = `
+					PUBLICO MAIN :clase [ principal( STRING { } ) :  metodo [
+				##
+				variable2 declarar real = <6.6>;
+				declarar variable1 integer = <5>;
+				declarar cadena1 string = <"hola">;
+				if: (3>=5)[
+					variable1 = <16>;
+					variable1 = <variable1 + 1>;
+					variable4 = <"hola2">;
+					sentencia.consola(true + 1);
+					sentencia.consola("prueba de un string");
+				] entonces if:(true) [
+					declarar cadena2 string = <"mundo">;
+					sentencia.consola(cadena1+cadena2);
+				] entonces [
+					sentencia.consola("Estoy dentro del else");
+				];
+				sentencia.consola(cadena2);
+				]]
+			`
+	*/
 
 	//Obteniendo el input
 	cadena_entrada := antlr.NewInputStream(input)
@@ -101,7 +106,7 @@ func Principal() {
 
 	antlr.ParseTreeWalkerDefault.Walk(nvisitor, tree)
 	fmt.Println(nvisitor.GetConsola())
-
+	return nvisitor.GetConsola()
 	/*
 		//Leyendo tokens del lexer e imprimiendolos
 		for {
