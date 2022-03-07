@@ -1,4 +1,4 @@
-// Code generated from c:\Projects\Go\src\ServidorPrimeraGramatica\primeraGramatica\parser\Nlexer.g4 by ANTLR 4.8. DO NOT EDIT.
+// Code generated from c:\Users\Joddie\Documents\GitHub\ip2_2022_1s_lab_tarea1\ServidorPrimeraGramatica\primeraGramatica\parser\Nlexer.g4 by ANTLR 4.8. DO NOT EDIT.
 
 package parser
 
